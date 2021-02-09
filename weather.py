@@ -1,4 +1,3 @@
-import logging
 from flask import Flask, request, render_template
 from flask_cors import CORS, cross_origin
 import requests
@@ -22,6 +21,8 @@ def index():
 def temperature():
   currentCity = request.args.get('currentCity')
   r = requests.get(baseUrl + 'weather?q='+currentCity+'&units=imperial&appid='+apiKey+'')
+  # r = requests.get(baseUrl + 'weather?q='+currentCity+'&units=imperial&appid=6986add04774ab3465c3928cd47ef988')
+  # r = requests.get(baseUrl + 'weather?q='+currentCity+'&units='+API_KEY+'')
   return r.json()
 
 @app.route('/forecast', methods=['GET'])
@@ -29,6 +30,7 @@ def temperature():
 def forecast():
   currentCity = request.args.get('currentCity')
   r = requests.get(baseUrl + 'forecast?q='+currentCity+'&units=imperial&appid='+apiKey+'')
+  # r = requests.get(baseUrl + 'forecast?q='+currentCity+'&units=imperial&appid=6986add04774ab3465c3928cd47ef988')
   return r.json()
 
 
